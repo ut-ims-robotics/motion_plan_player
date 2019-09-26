@@ -1,6 +1,6 @@
 # motion\_plan\_player
 
-This is a ROS package that reads in a 2D matrix from a CSV file and publishes the data as joint states. 
+This is a ROS package that reads in a 2D matrix from a CSV file and publishes the data as joint states of Franka Emika Panda 7DOF manipulator. 
 
 In CSV file, each row defines a state of 7 joints at a specific time instance:
 ```
