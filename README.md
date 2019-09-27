@@ -32,4 +32,12 @@ tn_js0,  tn_js1, ... ,tn_js6
 
 ## Example usage
 
-```rosrun motion_plan_player _file:=path/to/dataset.csv _rate=10```
+To run everything with a single command, use the launch file:
+
+```rosrun motion_plan_player motion_plan_player.launch file:=path/to/dataset.csv _rate=10```
+
+To run visualisation and the player node separately use:
+
+```roslaunch motion_plan_player motion_plan_player.launch viz_only:=true```
+
+```rosrun motion_plan_player motion_plan_player _file:=path/to/dataset.csv _rate=10```

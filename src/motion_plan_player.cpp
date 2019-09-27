@@ -16,12 +16,11 @@ MotionPlanPlayer::MotionPlanPlayer(): node_("~")
 
   // Read parameters
   node_.param<double>("rate", rate_, 20);
-  
-  std::string topic = "joint_states";
-
 
   load();
 
+  std::string topic;
+  node_.param<std::string>("topic", topic, "joint_states");
   pub_ = node_.advertise<sensor_msgs::JointState>(topic, 1);
 }
 
@@ -29,7 +28,7 @@ MotionPlanPlayer::MotionPlanPlayer(): node_("~")
 bool MotionPlanPlayer::load()
 {
   std::string pkg_path = ros::package::getPath(ROS_PACKAGE_NAME); 
-  std::string file_path = pkg_path + "/sample_data/dataset.csv";
+  std::string file_path;
   node_.param<std::string>("file", file_path, pkg_path + "/sample_data/dataset.csv");
 
   ROS_INFO("Loading joint states from: %s", file_path.c_str());
