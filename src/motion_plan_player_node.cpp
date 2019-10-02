@@ -1,5 +1,5 @@
 #include <ros/ros.h>
-#include "motion_plan_player/motion_plan_player.h"
+#include "motion_planning/motion_plan_player.h"
 
 
 int main(int argc, char** argv)

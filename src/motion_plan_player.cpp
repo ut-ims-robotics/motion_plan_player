@@ -1,7 +1,7 @@
 // Include ROS
 #include <ros/ros.h>
 #include <ros/package.h>
-#include "motion_plan_player/motion_plan_player.h"
+#include "motion_planning/motion_plan_player.h"
 #include "sensor_msgs/JointState.h"
 
 // Include standard libraries

@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<launch>
+  <arg name="file" default="$(find motion_planning)/sample_data/dataset.csv" />
+  <arg name="rate" default="20" />
+  <arg name="load_gripper" default="true" />
+  <arg name="viz_only" default="false" />
+
+  <arg name="world" default="worlds/empty.world"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <arg name="world_name" value="$(arg world)"/>
+  </include>
+
+  <param name="/robotont/robot_description" command="$(find xacro)/xacro --inorder $(find robotont_description)/xacro/main.urdf.xacro" />
+
+  <!-- State publishers -->
+  <node ns="/robotont" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node ns="/robotont" name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+  <!-- Spawn a robot into Gazebo -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param /robotont/robot_description -urdf -model robotont" />
+
+</launch>
