@@ -10,7 +10,11 @@ t1_js1,  t1_js1, ... ,t1_js6
 tn_js0,  tn_js1, ... ,tn_js6
 ```
 
+## Installing dependencies
 
+```
+rosdep install --from-paths src --ignore-src -r -y
+```
 
 ## Published topics:
 

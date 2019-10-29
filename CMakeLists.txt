@@ -105,7 +105,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
 #  LIBRARIES motion_planning
-  CATKIN_DEPENDS roscpp roslib sensor_msgs moveit_ros_planning_interface
+  CATKIN_DEPENDS rospy roscpp roslib sensor_msgs moveit_commander
 #  DEPENDS system_lib
 )
 
@@ -133,7 +133,8 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
- add_executable(${PROJECT_NAME}_node src/motion_plan_player_node.cpp src/motion_plan_player.cpp)
+ add_executable(motion_plan_player_node src/motion_plan_player_node.cpp src/motion_plan_player.cpp)
+ # add_executable(jacobian_planner_node src/jacobian_planner_node.cpp src/jacobian_planner.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -143,12 +144,17 @@ include_directories(
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
- add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+ add_dependencies(motion_plan_player_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+ # add_dependencies(jacobian_planner_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
- target_link_libraries(${PROJECT_NAME}_node
+ target_link_libraries(motion_plan_player_node
    ${catkin_LIBRARIES}
  )
+
+# target_link_libraries(jacobian_planner_node
+#   ${catkin_LIBRARIES}
+# )
 
 #############
 ## Install ##
